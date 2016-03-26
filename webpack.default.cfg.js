@@ -1,4 +1,5 @@
 module.exports = {
+    watch: true,
     output: {
         filename: 'build.js'
     },
@@ -23,7 +24,18 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: "file?context=src&name=[path][name].[ext]"
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css", "sass"]
+            },
+            {
+                test: /\.css$/,
+                loaders: ['style', 'css']
             }
         ]
+    },
+    sassLoader: {
+        includePaths: [ 'src/app/sass' ]
     }
 };

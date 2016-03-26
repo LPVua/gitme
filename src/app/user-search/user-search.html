@@ -1,0 +1,85 @@
+<div class="directive__user-search">
+    <div class="search-input-wrapper">
+        <div class="selected">
+            <div class="item" ng-repeat="user in searchCtrl.users">
+                <span ng-bind="user.name"></span>
+                <a href="javascript:;" class="close" ng-click="searchCtrl.deleteUser(user)"></a>
+            </div>
+        </div>
+        <input type="text" ng-model="searchCtrl.form.userName" placeholder="Користувач" ng-enter="searchCtrl.addUser()">
+    </div>
+    <div class="search-input-hint">
+        Введіть ім'я користувача та натисніть return (enter)
+    </div>
+
+    <div class="users-list-wrapper" ng-if="searchCtrl.users.length">
+        <div class="item" ng-repeat="user in searchCtrl.users">
+            <a href="javascript:;" class="close-big" ng-click="searchCtrl.deleteUser(user)"></a>
+            <div class="avatar-big">
+                <div class="img-wrapper">
+                    <img ng-src="{{ user.avatar }}" alt="">
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="main-info">
+                    <div class="name" ng-bind="user.name">
+                        User Name
+                    </div>
+                    <div class="nick" ng-bind="user.nick">
+                        @username
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <span ng-bind="user.subscribersCount">0</span>
+                        Підписників
+                    </div>
+                    <div class="stat">
+                        <span ng-bind="user.starsCount">0</span>
+                        Зірок
+                    </div>
+                    <div class="stat">
+                        <span ng-bind="user.reposCount">0</span>
+                        Репозиторіїв
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-results-wrapper">
+        <div class="nothing-found" ng-if="!searchCtrl.users.length">
+            <span class="lnr lnr-pointer-up"></span>
+            <h1>Додайте хоча б одного користувача</h1>
+        </div>
+        <div class="items-list" ng-if="searchCtrl.users.length === 1">
+            <div class="item" ng-repeat="repo in searchCtrl.repos">
+                <div class="visibility">
+                    <div class="icon-wrapper">
+                        <i class="lnr" ng-class="{'lnr-eye': !repo.private, 'lnr-lock': repo.private}"></i>
+                    </div>
+                </div>
+                <div class="repo-info">
+                    <div class="left">
+                        <div class="repo-name" ng-bind="repo.name">
+                            repo name
+                        </div>
+                        <div class="repo-desc" ng-bind="repo.description">
+                            repo derscrtipion
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="stars">
+                            <span class="lnr lnr-star"></span>
+                            <span class="value" ng-bind="repo.starsCount">0</span>
+                        </div>
+                        <div class="branches">
+                            <span class="lnr lnr-leaf"></span>
+                            <span class="value" ng-bind="repo.forksCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
