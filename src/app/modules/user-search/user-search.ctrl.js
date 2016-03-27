@@ -11,8 +11,16 @@ function UserSearchCtrl(GithubService){
 
     // loading states for users and repos list
     this.loading = {
-        user: false
+        user: false,
+        repos: false
     };
+
+    // loades state for users and repos list
+    this.loaded = {
+        repos: false
+    };
+
+    this.page = 1;
 
     /**
      * Adds user to users array; refreshes repos
@@ -59,7 +67,25 @@ function UserSearchCtrl(GithubService){
     function getRepos(user){
         GithubService.searchRepos(user).then(function(repos){
             self.repos = repos;
+            self.page = 1;
+            self.loaded.repos = false;
         });
+    }
+
+    this.loadReposPage = function(){
+        if (this.loaded.repos) {
+            return;
+        }
+        this.loading.repos = true;
+        this.page++;
+        GithubService.searchRepos(this.users[0], 20, this.page).then(function(repos){
+            if (!repos.length) {
+                this.loading.repos = false;
+                this.loaded.repos = true;
+            }
+            self.repos = [...self.repos, ...repos];
+            this.loading.repos = false;
+        }.bind(this));
     }
 }
 UserSearchCtrl.$inject = ['GithubService'];

@@ -61,7 +61,11 @@
             <span class="lnr lnr-pointer-up"></span>
             <h1>Додайте хоча б одного користувача</h1>
         </div>
-        <div class="items-list" ng-if="searchCtrl.users.length === 1">
+        <div class="items-list"
+             ng-if="searchCtrl.users.length === 1"
+             infinite-scroll="searchCtrl.loadReposPage()"
+             can-load="!searchCtrl.loading.repos"
+        >
             <div class="item" ng-repeat="repo in searchCtrl.repos">
                 <div class="visibility">
                     <div class="icon-wrapper">
@@ -87,6 +91,11 @@
                             <span class="value" ng-bind="repo.forksCount">0</span>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="loading" ng-if="searchCtrl.loading.repos && !searchCtrl.loaded.repos">
+                <div class="cssload-container">
+                    <div class="cssload-speeding-wheel"></div>
                 </div>
             </div>
         </div>

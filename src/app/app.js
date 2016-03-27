@@ -11,6 +11,7 @@ require('lodash');
 // app modules
 require('./modules/ng-enter/ng-enter.drv');
 require('./modules/focus/focus.drv');
+require('./modules/infinite-scroll/infinite-scroll.drv');
 require('./modules/github/github.mdl');
 require('./modules/user-search/user-search.mdl');
 
@@ -20,6 +21,7 @@ module.exports = angular.module('app', [
         'ngEnter',
         'ngResource',
         'gitme.github',
-        'ngFocus'
+        'ngFocus',
+        'infiniteScroll'
     ])
     .config(require('./config'));

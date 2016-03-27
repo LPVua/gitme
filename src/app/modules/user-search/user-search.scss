@@ -176,6 +176,17 @@
           }
         }
       }
+      .loading {
+        text-align: center;
+        margin: 15px 0;
+        .cssload-container {
+          height: 30px;
+          .cssload-speeding-wheel {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
     }
   }
   .users-list-wrapper {
