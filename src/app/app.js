@@ -5,17 +5,21 @@ require('./sass/app.scss');
 
 require('angular');
 require('angular-resource');
+require('angular-animate');
 require('lodash');
 
 // app modules
-require('./ng-enter/ng-enter.drv');
-require('./github/github.mdl');
-require('./user-search/user-search.mdl');
+require('./modules/ng-enter/ng-enter.drv');
+require('./modules/focus/focus.drv');
+require('./modules/github/github.mdl');
+require('./modules/user-search/user-search.mdl');
 
 module.exports = angular.module('app', [
+        'ngAnimate',
         'gitme.user-search',
         'ngEnter',
         'ngResource',
-        'gitme.github'
+        'gitme.github',
+        'ngFocus'
     ])
     .config(require('./config'));

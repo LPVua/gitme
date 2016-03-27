@@ -4,6 +4,7 @@
   margin-top: 35px;
   .search-input-wrapper {
     border-bottom: 2px solid #9391F3;
+    cursor: text;
     .selected {
       display: inline-block;
       .item {
@@ -16,10 +17,26 @@
         color: #FFFFFF;
         font-size: 12px;
         position: relative;
+        span {
+          overflow: hidden;
+          white-space: nowrap;
+        }
         .close {
           position: absolute;
           top: -3px;
           right: -3px;
+        }
+        &.ng-leave.ng-leave-active,
+        &.ng-move,
+        &.ng-enter {
+          opacity: 0;
+          max-width: 0;
+        }
+        &.ng-leave,
+        &.ng-move.ng-move-active,
+        &.ng-enter.ng-enter-active {
+          opacity: 1;
+          max-width: 200px;
         }
       }
     }
@@ -35,6 +52,11 @@
         font-weight: normal;
         font-size: 16px;
       }
+    }
+    .cssload-container {
+      float: right;
+      margin-top: 12px;
+      margin-right: 10px;
     }
   }
   .search-input-hint {
@@ -65,15 +87,39 @@
       color: #C1C1C1;
       span {
         font-size: 60px;
+        animation: point-up-down 1s linear infinite alternate;
       }
       h1 {
         font-weight: normal;
         font-size: 28px;
         margin: 12px 0;
       }
-
+      &.ng-leave.ng-leave-active,
+      &.ng-move,
+      &.ng-enter {
+        opacity: 0;
+        max-height: 0;
+      }
+      &.ng-leave,
+      &.ng-move.ng-move-active,
+      &.ng-enter.ng-enter-active {
+        opacity: 1;
+        max-height: 300px;
+      }
     }
     .items-list {
+      &.ng-leave.ng-leave-active,
+      &.ng-move,
+      &.ng-enter {
+        opacity: 0;
+        max-height: 0;
+      }
+      &.ng-leave,
+      &.ng-move.ng-move-active,
+      &.ng-enter.ng-enter-active {
+        opacity: 1;
+        max-height: 200px;
+      }
       .item {
         color: #C1C1C1;
         border-radius: 2px;
@@ -133,9 +179,33 @@
     }
   }
   .users-list-wrapper {
+    &.ng-leave.ng-leave-active,
+    &.ng-move,
+    &.ng-enter {
+      opacity: 0;
+      max-height: 0;
+    }
+    &.ng-leave,
+    &.ng-move.ng-move-active,
+    &.ng-enter.ng-enter-active {
+      opacity: 1;
+      max-height: 200px;
+    }
     .item {
       display: flex;
       position: relative;
+      &.ng-leave.ng-leave-active,
+      &.ng-move,
+      &.ng-enter {
+        opacity: 0;
+        max-height: 0;
+      }
+      &.ng-leave,
+      &.ng-move.ng-move-active,
+      &.ng-enter.ng-enter-active {
+        opacity: 1;
+        max-height: 200px;
+      }
       &:not(:first-child) {
         margin-top: 30px;
         padding-top: 15px;

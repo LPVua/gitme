@@ -63,7 +63,8 @@ function GithubService(GithubResource, $q, User, Repo){
         let pages = Math.ceil(user.reposCount / 100);
         let requests = [];
         if (!user.reposCount) {
-            return 0;
+            deferred.resolve(0);
+            return deferred.promise;
         }
         while (pages) {
             requests.push(self.getRepos(user, 100, pages));

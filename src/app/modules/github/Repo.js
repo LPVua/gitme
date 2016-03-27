@@ -1,7 +1,6 @@
 function RepoFactory(){
     class Repo {
         constructor(repo){
-            console.log(repo);
             this.name = repo.name;
             this.fullName = repo.full_name;
             this.description = repo.description;

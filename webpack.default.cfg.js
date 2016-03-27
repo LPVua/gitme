@@ -14,14 +14,6 @@ module.exports = {
                 }
             },
             {
-                test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-                loader: "file",
-                query: {
-                    name: 'assets/[path][name].[ext]',
-                    context: 'src'
-                }
-            },
-            {
                 test: /\.html$/,
                 loader: "file?context=src&name=[path][name].[ext]"
             },

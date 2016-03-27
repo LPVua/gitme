@@ -1,12 +1,21 @@
 <div class="directive__user-search">
-    <div class="search-input-wrapper">
+    <div class="search-input-wrapper" ng-click="searchCtrl.form.focused = true">
         <div class="selected">
             <div class="item" ng-repeat="user in searchCtrl.users">
                 <span ng-bind="user.name"></span>
                 <a href="javascript:;" class="close" ng-click="searchCtrl.deleteUser(user)"></a>
             </div>
         </div>
-        <input type="text" ng-model="searchCtrl.form.userName" placeholder="Користувач" ng-enter="searchCtrl.addUser()">
+        <input type="text"
+               ng-model="searchCtrl.form.userName"
+               ng-focus="searchCtrl.form.focused"
+               placeholder="Користувач"
+               ng-enter="searchCtrl.addUser()"
+               ng-disabled="searchCtrl.form.disabled"
+        >
+        <div class="cssload-container" ng-if="searchCtrl.loading.user">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
     </div>
     <div class="search-input-hint">
         Введіть ім'я користувача та натисніть return (enter)
@@ -48,7 +57,7 @@
     </div>
 
     <div class="search-results-wrapper">
-        <div class="nothing-found" ng-if="!searchCtrl.users.length">
+        <div class="nothing-found" ng-if="!searchCtrl.users.length && !searchCtrl.loading.user">
             <span class="lnr lnr-pointer-up"></span>
             <h1>Додайте хоча б одного користувача</h1>
         </div>
